@@ -245,7 +245,7 @@ ngx_http_init_sticky_peer(ngx_http_request_t *r, ngx_http_upstream_srv_conf_t *u
                 ngx_log_error(NGX_LOG_WARN, r->connection->log, 0,
                               "[sticky/init_sticky_peer] unable to convert "
                               "the route \"%V\" to an integer value", &route);
-            } else if (n >= 0 && n < (ngx_int_t)iphp->rrp.peers->number) {
+            } else if (n >= 0 && n < (ngx_int_t) iphp->rrp.peers->number) {
                 /* found one */
                 ngx_log_debug2(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                                "[sticky/init_sticky_peer] the route \"%V\" "
@@ -282,9 +282,9 @@ ngx_http_get_sticky_peer(ngx_peer_connection_t *pc, void *data)
     ngx_str_t                     route;
     ngx_int_t                     ret, selected_peer = -1;
     ngx_uint_t                    tmp, n, i;
-    ngx_http_sticky_srv_conf_t   *conf = iphp->sticky_conf;
     ngx_http_upstream_rr_peer_t  *peer = NULL;
     ngx_http_sticky_peer_data_t  *iphp = data;
+    ngx_http_sticky_srv_conf_t   *conf = iphp->sticky_conf;
 
     ngx_log_debug4(NGX_LOG_DEBUG_HTTP, pc->log, 0,
                    "[sticky/get_sticky_peer] get sticky peer, "
