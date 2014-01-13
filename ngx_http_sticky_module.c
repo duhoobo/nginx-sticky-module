@@ -211,16 +211,6 @@ ngx_http_init_sticky_peer(ngx_http_request_t *r, ngx_http_upstream_srv_conf_t *u
         /* hash or hmac, just compare digest */
         if (iphp->sticky_conf->hash || iphp->sticky_conf->hmac) {
 
-            /* check internal struct has been set */
-            if (!iphp->sticky_conf->peers) {
-                /* log a warning, as it will continue without the sticky */
-                ngx_log_error(NGX_LOG_WARN, r->connection->log, 0,
-                              "[sticky/init_sticky_peer] internal peers "
-                              "struct has not been set");
-
-                return NGX_OK; /* return OK, in order to continue */
-            }
-
             /* search the digest found in the cookie in the peer digest list */
             for (i = 0; i < iphp->rrp.peers->number; i++) {
 
